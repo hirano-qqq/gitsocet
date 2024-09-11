@@ -108,7 +108,10 @@ io.emit("namae-kimaridesu", allname);
 
 
 
-
+const PORT=process.env.PORT || 3000;
+app.listen(PORT,()=>{
+    console.log("listening server")
+})
 /**
  * 3000番でサーバを起動する
  */
