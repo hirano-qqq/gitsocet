@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>SocketIOチャット</title>
+  <link rel="stylesheet" href="style.css" type="text/css" media="all">
+  <style>
+    #pop-sec{display:none} 
+    #inputmyname{display:none}
+    #hayaoshi-mondai{display:none}
+    #stop-hayaoshi-mondai{display:none}
+    #hayaoshi-button{display:none}
+    #taiki{display:none}
+    #shutsudai{display:none}
+    #kaitou{display:none}
+    #kaitou-pop{display:none}
+    #seikai-hantei{display:none}
+    #machigai-hantei{display:none}
+    #jikangire{display:none}
+    #next{display:none}
+    .msg-me{color:blue}
+    .name {font-weight:bold}
+  </style>
+</head>
+<body>
+
+<h1>SocketIOチャット</h1>
+<section id="sankasha" style="text-align: right">  <div id= "sankashas"></div></section>
+<section id="shutsudaisya">
+
+  
+    <div style="text-align: right"><ul id="shutsudaisya-name"></ul></div>
+    <div style="text-align: right" class="display-none"><input type="text" id="shutsudaisya-token"></div>
+    <div style="text-align: right" class="display-none"><input type="text" id="hide-mondaibun"></div>
+    <div style="text-align: right" class="display-none"><input type="text" id="kaitousya-token"></div>
+    <div style="text-align: right" class="display-none"><input type="text" id="hide-zenbun"></div>
+
+
+</section>
+
+
+
+<!-- STEP1. 接続中 -->
+<section id="nowconnecting">
+  ...サーバに接続中
+</section>
+<!-- /接続中 -->
+
+
+
+<!-- STEP2. 名前を入力 -->
+<section id="inputmyname">
+  <p>あなたの名前を入力してください</p>
+  <form id="frm-myname">
+    <input type="text" id="txt-myname">
+    <button>入室</button>
+  </form>
+</section>
+<!-- /名前を入力 -->
+<section id="taiki">
+  <form id="shutsudai-suru-post">
+    <div style="text-align: right">
+      <!-- <input type="button"  id="shutsudai-suru" value="出題者になる" style="text-align: right"> -->
+      <button id="shutsudai-suru" type="submit">出題者になる</button>
+  </div>
+    </form>
+
+</section>
+
+<section id="hayaoshi-mondai">
+<div class="box">
+<ul id="msglist"></ul>
+</div></section>
+
+<section id="stop-hayaoshi-mondai">
+<div class="box">
+<ul id="stop-msglist"></ul>
+</div></section>
+  
+    <section id="hayaoshi-button">
+  <form id="hayaoshi-post"><div style="text-align:center">
+    <span id="myname"></span>&nbsp;
+    <!-- <input type="button" value="★回答ボタン★" id="hayaoshi-push"> -->
+      <button id="hayaoshi-push" type="submit">★回答ボタン★</button>
+  <br></div>
+</form></section>
+
+
+
+
+
+<!-- STEP3. チャット開始 -->
+<section id="shutsudai">
+  <!-- 発言フォーム -->
+  <form id="frm-post">
+    <span id="myname"></span>&nbsp;<input type="text" id="shutsudai-msg">
+    <button>出題</button>
+  </form>
+
+  <form id="shutsudai-yameru-post">
+    <div style="text-align: right">
+      <!-- <input type="button"  id="shutsudai-yameru " value="回答者に戻る" style="text-align: right"> -->
+      <button id="shutsudai-yameru" type="submit">回答者に戻る</button>
+  </div>
+</form>
+  <!-- 発言ログ -->
+  <!-- <p id="msglist"></p> -->
+</section>
+
+<section id="kaitou">
+  <form id="kaitoupost">
+  <input type="text" id="kaitou-msg">
+   <button>回答を送信</button>
+  </form>
+</section>
+
+<section id="kaitou-pop">
+<div id = whois-kaitousya></div>
+<div id = kotae></div>
+</section>
+
+<section id="jikangire">
+  <form id="jikangire-button" >
+    <button type="submit">時間切れ</button>
+    </form>
+  </section>
+  <section id="next">
+    <form id="next-button" >
+      <button type="submit">次の問題へ</button>
+      </form>
+    </section>
+
+<section id="seikai-hantei">
+<form id="seikai-button" style="display: inline">
+  <button type="submit">正解</button>
+  </form>
+  <form id="machigai-button" style="display: inline">
+    <button type="submit">間違い</button>
+    </form>
+
+  
+
+</section>
+
+<section id ="pop-sec">
+
+ 
+
+  <div style="text-align: center" class="fade-in-text">
+
+  <p id="pop"></p>
+
+</div>
+
+</section>
+
+<!-- /チャット本体 -->
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="util.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
